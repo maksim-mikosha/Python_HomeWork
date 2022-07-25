@@ -7,6 +7,12 @@
 
 from random import randint
 
+def check_table(table, count):
+    temp_check = table - count
+    if temp_check < 0:
+        return False
+    else:
+        return True
     
 def main():
     print('Хочешь сыграть в игру?! Начнём :)')
@@ -30,7 +36,7 @@ def main():
             print('-----------')
             print('Ход Игрока!')
             count_in_round = int(input('Игрок, введи сколько конфет берешь со стола - '))
-            if 1 <= count_in_round <= amount_in_round:
+            if 1 <= count_in_round <= amount_in_round and check_table(table, count_in_round):
                 table -= count_in_round
                 print(f'Игрок взял {count_in_round} конфет. На столе осталось {table} конфет')
                 if table <= 0:
@@ -39,19 +45,23 @@ def main():
                     player = 0
                     bot = 1
             else:
-                print(f'Не тупи! За один раз можно взять от 1 до {amount_in_round} конфет')
+                print('Не тупи! Введи допустимое значение.')
+                print(f'За один раз можно взять от 1 до {amount_in_round} конфет')
 
         if bot == 1:
             print('-----------------------')
             print('Ход бездушной железяки)')
             count_in_round = randint(1, amount_in_round)
-            table -= count_in_round
-            print(f'Комп берет со стола {count_in_round} конфет. На столе осталось {table} конфет')
-            if table <= 0:
-                continue
+            if check_table(table, count_in_round):
+                table -= count_in_round
+                print(f'Комп берет со стола {count_in_round} конфет. На столе осталось {table} конфет')
+                if table <= 0:
+                    continue
+                else:
+                    player = 1
+                    bot = 0
             else:
-                player = 1
-                bot = 0
+                print('Чет я залагал. Сейчас исправлюсь ;)')
 
     if player == 1:
         print('******************')
