@@ -15,7 +15,7 @@ def main():
         view(menu.ui_menu())
         inputCommand = int(input('Введи номер команды: '))
         if inputCommand == 0:
-            confirm = input('Данное действие перезапишет текущий каталог! Уверен? yes/no ')
+            confirm = input('Данное действие перезапишет текущий каталог! Уверен (yes/no)? - ')
             if confirm == 'yes':
                 catalog = logic.fill_test_dict(catalog)
                 print('Вроде получилось)')
