@@ -1,0 +1,5 @@
+id;name;surname;last_company;
+1;Ivan;Ivanov;Ozon
+2;Semen;Efremov;Yandex
+3;Oleg;Vasechkin; 
+4;Petr;Sidorov;Mail.ru
