@@ -13,27 +13,34 @@ def fill_test_dict(dict):
 
 def add_to_file(users_dict):
     print(f'Заголовки каталога - {users_dict["0"]}')
-    countKeys = len(list(users_dict.keys())) + 1
-    print(countKeys)
+    countKeys = len(list(users_dict.keys()))
     tempList = list()
-    tempList.append(countKeys)
-    tempList.append(input('Введи имя -'))
-    tempList.append(input('Введи фамилию -'))
-    tempList.append(input('Введи номер телефона -'))
-    tempList.append(input('Введи заметку -'))
-    print(tempList)
-    users_dict = dict(tempList)
+    tempList.append(input('Введи имя - '))
+    tempList.append(input('Введи фамилию - '))
+    tempList.append(input('Введи номер телефона - '))
+    tempList.append(input('Введи заметку - '))
+    users_dict[countKeys] = tempList
+    return users_dict
+
+def update_value(users_dict, number_str):
+    print(f'Заголовки каталога - {users_dict["0"]}')
+    tempList = list()
+    tempList.append(input('Введи имя - '))
+    tempList.append(input('Введи фамилию - '))
+    tempList.append(input('Введи номер телефона - '))
+    tempList.append(input('Введи заметку - '))
+    users_dict[number_str] = tempList
     return users_dict
 
 def import_to_line(dict):
-    with open("Python_HomeWork\HomeWork_7\import-variant1.csv", "w") as file:
+    with open("Python_HomeWork\HomeWork_7\import-variant1.csv", "w", encoding='utf-8') as file:
         for key in dict:
             if int(key) > 0:
                 file.write('; '.join(str(dict[key]).split(',')))
                 file.write('\n')
 
 def import_by_line(dict):
-    with open("Python_HomeWork\HomeWork_7\import-variant2.csv", "w") as file:
+    with open("Python_HomeWork\HomeWork_7\import-variant2.csv", "w", encoding='utf-8') as file:
         for key in dict:
             if int(key) > 0:
                 for value in dict[key]:
